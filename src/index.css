@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  .dark {
+    --bg-primary: #0C0C0E;
+    --card-bg: #151518;
+    --card-bg-elevated: #1B1B1F;
+    --text-primary: #F4F4F5;
+    --text-muted: #9CA3AF;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0C0C0E;
+    color: #F4F4F5;
+    overflow-x: hidden;
+  }
+}
+
+/* Premium smooth dark tactile components */
+.clay-card {
+  background-color: #151518;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 
+    0 14px 30px -4px rgba(0, 0, 0, 0.6),
+    0 4px 12px -2px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clay-button-primary {
+  background-color: #27272A;
+  color: #F4F4F5;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clay-button-primary:hover {
+  background-color: #3F3F46;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.clay-button-primary:active {
+  transform: translateY(0.5px) scale(0.99);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.clay-button-secondary {
+  background-color: #1A1A1E;
+  color: #D4D4D8;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.04);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clay-button-secondary:hover {
+  background-color: #222227;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.clay-button-secondary:active {
+  transform: translateY(0.5px) scale(0.99);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.clay-input {
+  background-color: #101012;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: #F4F4F5;
+  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease;
+}
+
+.clay-input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
