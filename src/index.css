@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  /* One accent: a muted jade. Used for focus, selection, primary actions, and live status. */
+  --color-accent-50: #E8F4EE;
+  --color-accent-100: #CFE9DC;
+  --color-accent-200: #A6D5BE;
+  --color-accent-300: #6FB896;
+  --color-accent-400: #55A67F;
+  --color-accent-500: #3E8E68;
+  --color-accent-600: #2F7755;
+  --color-accent-700: #245F43;
+  --color-accent-800: #1B4B34;
+  --color-accent-900: #133A28;
+  --color-accent-950: #0A2219;
+
+  --color-success-50: #E8F4EE;
+  --color-success-100: #CFE9DC;
+  --color-success-300: #6FB896;
+  --color-success-400: #55A67F;
+  --color-success-500: #3E8E68;
+  --color-success-600: #2F7755;
+  --color-success-700: #245F43;
+  --color-success-800: #1B4B34;
+  --color-success-950: #0A2219;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background-color: #0C0C0E;
+    color: #F4F4F5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(85, 166, 127, 0.28);
+    color: #FFFFFF;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(85, 166, 127, 0.7);
+    outline-offset: 2px;
+  }
+}
+
+/* Components sit in a layer so Tailwind utilities can still override them per screen. */
+@layer components {
+  .surface {
+    background-color: #151518;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #55A67F;
+    color: #06170F;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 0.625rem;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: #6FB896;
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #1A1A1E;
+    color: #D4D4D8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.625rem;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: #222227;
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .btn-secondary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .field {
+    background-color: #101012;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: #F4F4F5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .field::placeholder {
+    color: #6B7280;
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: rgba(85, 166, 127, 0.55);
+    box-shadow: 0 0 0 3px rgba(85, 166, 127, 0.14);
+  }
+}
+
+/* Thin scrollbars that match the dark surfaces */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Small motion that answers user actions. Disabled for users who prefer reduced motion. */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.98) translateY(4px); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-page-enter {
+  /* 'backwards' keeps no transform after the animation ends, so fixed dialogs stay pinned to the screen. */
+  animation: page-enter 0.32s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out both;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.btn-primary,
+.btn-secondary {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.btn-primary:active:not(:disabled),
+.btn-secondary:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+@keyframes caret-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+.splash-caret {
+  animation: caret-blink 0.9s step-end infinite;
+}
+
+@keyframes ring-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(85, 166, 127, 0.5); }
+  100% { box-shadow: 0 0 0 14px rgba(85, 166, 127, 0); }
+}
+
+.animate-ring {
+  animation: ring-pulse 0.9s ease-out 0.15s both;
+}
+
+/* Buttons lift a little on hover, a small reward for pointing at them */
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -10px rgba(85, 166, 127, 0.7);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

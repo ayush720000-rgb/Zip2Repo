@@ -1,0 +1,9 @@
+# One command: docker compose up --build
+services:
+  zip2repo:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
